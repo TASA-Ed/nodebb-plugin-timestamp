@@ -113,6 +113,31 @@ function openTimePicker(
   });
 }
 
+/**
+ * 将页面中所有 .plugin-timestamp 元素的 title（hover tooltip）
+ * 替换为用户浏览器本地时区的格式化时间。
+ * 不修改 textContent —— 让 NodeBB 内置的 timeago 继续渲染相对时间。
+ */
+function localizeTimestamps(root: ParentNode = document): void {
+  const elements = root.querySelectorAll<HTMLTimeElement>("time.plugin-timestamp");
+  elements.forEach((el) => {
+    const iso = el.getAttribute("datetime");
+    if (!iso) return;
+
+    const date = new Date(iso);
+    if (isNaN(date.getTime())) return;
+
+    el.title = date.toLocaleString(undefined, {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit"
+    });
+  });
+}
+
 // NodeBB 页面加载完成后，向 composer 的 dispatch table 注册按钮点击处理
 $(window).on("action:app.load", () => {
   require(["composer/formatting"], (formatting: unknown) => {
@@ -123,4 +148,14 @@ $(window).on("action:app.load", () => {
       }
     );
   });
+});
+
+// 初次加载 + ajaxify 切换页面时，本地化所有时间戳
+$(window).on("action:app.load action:ajaxify.end", () => {
+  localizeTimestamps();
+});
+
+// 帖子动态追加时（无限滚动等），也需要处理新出现的时间戳
+$(window).on("action:posts.loaded", () => {
+  localizeTimestamps();
 });

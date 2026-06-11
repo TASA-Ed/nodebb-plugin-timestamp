@@ -26,15 +26,16 @@ function applyTimestamp(content: string) {
 
     const date = new Date(epoch);
     const iso = date.toISOString();
-    // 用 NodeBB 内置的 timeago class，框架会自动渲染相对时间
-    // title 属性提供 hover tooltip 的精确时间
+    // datetime 提供机器可读的 ISO 时间
+    // 实际显示文本由客户端 JS 根据用户本地时区渲染
+    // 服务端仅输出 UTC 作为 fallback
     return [
       `<time`,
       `  class="timeago plugin-timestamp"`,
       `  datetime="${iso}"`,
-      `  title="${date.toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" })}"`,
+      `  title="${iso}"`,
       `  data-timestamp="${epoch}"`,
-      `>${date.toLocaleString("zh-CN")}</time>`
+      `>${iso}</time>`
     ].join(" ");
   });
 }
