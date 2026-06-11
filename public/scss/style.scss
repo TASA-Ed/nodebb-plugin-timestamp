@@ -1,0 +1,11 @@
+/* 让时间标签有视觉提示 */
+time.plugin-timestamp {
+  border-bottom: 1px dashed currentColor;
+  cursor: help;
+  white-space: nowrap;
+}
+
+/* 自定义 tooltip（利用 title 属性，也可换成 Bootstrap tooltip） */
+time.plugin-timestamp:hover {
+  opacity: 0.75;
+}

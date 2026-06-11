@@ -1,0 +1,8 @@
+{
+  "composer.timestamp": "Insert time",
+  "dialog.title": "Insert time",
+  "dialog.label": "Select a time",
+  "dialog.description": "Other users will see a relative time (such as \"in 3 days\"); hover over it to see the exact time.",
+  "dialog.cancel": "Cancel",
+  "dialog.confirm": "Insert"
+}

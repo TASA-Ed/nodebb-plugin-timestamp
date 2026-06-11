@@ -1,0 +1,8 @@
+{
+  "composer.timestamp": "插入时间",
+  "dialog.title": "插入时间",
+  "dialog.label": "选择时间",
+  "dialog.description": "其他用户将看到相对时间（如\"3 天后\"），悬停可查看精确时间。",
+  "dialog.cancel": "取消",
+  "dialog.confirm": "插入"
+}

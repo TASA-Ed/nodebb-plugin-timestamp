@@ -1,0 +1,23 @@
+{
+  "id": "nodebb-plugin-timestamp",
+  "name": "Timestamp Component",
+  "description": "Insert relative times in posts; hover to display the exact time | 在帖子中插入相对时间，hover 显示精确时间",
+  "url": "https://github.com/TASA-Ed/nodebb-plugin-timestamp",
+  "hooks": [
+    {
+      "hook": "filter:composer.formatting",
+      "method": "registerFormatting"
+    },
+    {
+      "hook": "filter:parse.post",
+      "method": "parsePost"
+    },
+    {
+      "hook": "filter:parse.raw",
+      "method": "parseRaw"
+    }
+  ],
+  "scripts": ["build/public/client.js"],
+  "scss": ["public/scss/style.scss"],
+  "languages": "public/languages"
+}

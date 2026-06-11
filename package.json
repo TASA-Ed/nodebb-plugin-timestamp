@@ -1,0 +1,43 @@
+{
+  "name": "nodebb-plugin-timestamp",
+  "version": "1.0.0",
+  "description": "Insert a relative time component into the post | 在帖子中插入相对时间组件",
+  "homepage": "https://www.tasaed.top",
+  "bugs": {
+    "url": "https://github.com/TASA-Ed/nodebb-plugin-timestamp/issues"
+  },
+  "license": "MIT",
+  "author": "TASA-Ed Studio",
+  "contributors": [
+    "ccd2s <tasaedem@outlook.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TASA-Ed/nodebb-plugin-timestamp.git"
+  },
+  "files": [
+    "build"
+  ],
+  "type": "module",
+  "main": "./build/index.js",
+  "scripts": {
+    "dev": "rolldown -c ./rolldown.config.ts --watch",
+    "build": "rolldown -c ./rolldown.config.ts && tsc --noEmit",
+    "typecheck": "tsc --noEmit",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check"
+  },
+  "devDependencies": {
+    "@types/jquery": "^4.0.1",
+    "@types/node": "^25.9.3",
+    "oxfmt": "^0.54.0",
+    "oxlint": "^1.69.0",
+    "rolldown": "^1.1.1",
+    "typescript": "^6.0.3"
+  },
+  "nbbpm": {
+    "compatibility": "^4.12.0"
+  }
+}
